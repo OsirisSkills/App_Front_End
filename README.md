@@ -1,3 +1,18 @@
+
+Frontend Application - Project Management Dashboard
+
+Ce front-end, développé en Angular, offre une interface utilisateur intuitive pour visualiser et gérer les projets de l'entreprise à un niveau macro.
+Il fournit des tableaux de bord interactifs et des outils de navigation pour une expérience utilisateur fluide et réactive.
+
+
+
+
+
+
+
+
+
+
 # App
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.2.
