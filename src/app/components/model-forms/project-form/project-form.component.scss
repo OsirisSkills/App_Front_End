@@ -1,0 +1,32 @@
+form{
+    padding: 2em;
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+label{
+    font-weight: bold;
+}
+
+// Center the category form in the page
+.project-form{
+    margin: auto;
+    width: 100%;
+    padding: 0px;
+    min-width: 2em;
+}
+
+.foot-buttons{
+    margin: 1em auto;
+    padding: auto;
+    width: 100%;
+    text-align: center;
+}
+
+.foot-buttons button{
+    margin: 0.5em;
+    width: 10em;
+}

@@ -1,0 +1,73 @@
+<div class="my-container container-fluid">
+  <div id="members-search-header">
+    <div class="d-flex ms-2 mt-2">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/home">Accueil</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Projets</li>
+        </ol>
+      </nav>
+    </div>
+
+    <nav class="d-flex justify-content-between">
+      <div class="d-flex align-items-center">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class=" bi bi-list-ul nav-link  text-dark" routerLink="/liste">Liste</a>
+          </li>
+          <li class="nav-item">
+            <a class=" bi bi-kanban nav-link active text-primary" routerLink="/kanban-board">Kanban</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
+  </div>
+
+  <div class="row align-self-center">
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="example-container">
+          <h2 class="text-center do">En Cours</h2>
+
+          <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+            [cdkDropListConnectedTo]="[doneList,deleteList]" class="example-list-1" (cdkDropListDropped)="drop($event)">
+            <div class="example-box-1" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="example-container">
+          <h2 class="text-center delete">Supprimé</h2>
+          <div cdkDropList #deleteList="cdkDropList" [cdkDropListData]="delete"
+            [cdkDropListConnectedTo]="[todoList,doneList]" class="example-list-2" (cdkDropListDropped)="drop($event)">
+            <div class="example-box-2" *ngFor="let item of delete" cdkDrag>{{item}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+
+      <div class="card">
+        <div class="example-container">
+          <h2 class="text-center done">Terminé</h2>
+
+          <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+            [cdkDropListConnectedTo]="[todoList,deleteList]" class="example-list-3" (cdkDropListDropped)="drop($event)">
+            <div class="example-box-3" *ngFor="let item of done" cdkDrag>{{item}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<main id="main" class="main">
+
+
+</main>

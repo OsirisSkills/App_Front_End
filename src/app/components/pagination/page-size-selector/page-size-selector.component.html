@@ -1,0 +1,6 @@
+<label for="pageSize">Nombre d'éléments par page:</label>
+<select class="form-select form-select-sm" name="pageSize" id="pageSize"
+        [(ngModel)]="pageSizeSelected"
+        (change)="onPageSizeChangeHandler($event)">
+  <option *ngFor="let option of pageSizes" [value]="option">{{option}}</option>
+</select>

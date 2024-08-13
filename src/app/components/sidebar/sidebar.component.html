@@ -1,0 +1,35 @@
+<!-- ======= Sidebar ======= -->
+<nav #sidebarContainer class="d-flex-lg flex-column flex-shrink-0 p-3 h-100">
+  <div class="sidebar-sticky">
+    <a routerLink="/home" class="logo d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+      <img class="bi me-2" src="/assets/img/logo.png" alt="Logo" height="500" width="500">
+      <span class="fs-4" id="nav-title">Da Project</span>
+    </a>
+    <hr>
+    <ul class="nav flex-column">
+      <li class="nav-item mt-3" *ngFor="let item of menuItems">
+        <a class="nav-link" *ngIf="!item.children" routerLink="{{ item.link }}" [ngClass]="{'active': activePage === item.link.substring(1),
+        'link-light' : activePage != item.link.substring(1)}">
+          <span class="{{ item.icon }} me-2" aria-hidden="true"></span>
+          <span>{{ item.label }}</span>
+        </a>
+        <div class="nav-item" *ngIf="item.children">
+          <a class="nav-link" (click)="item.showChildren = !item.showChildren">
+            <span class="{{ item.icon }} me-2" aria-hidden="true"></span>
+            <span>{{ item.label }}</span>
+          </a>
+          <div class="{{item.setCollapse}} sub-menu" [ngClass]="{ 'show': item.showChildren }">
+            <ul class="nav flex-column">
+              <li class="nav-item" *ngFor="let child of item.children">
+                <a class="nav-link" routerLink="{{ child.link }}">
+                  <span class="{{ child.icon }} me-2"></span>
+                  <span>{{ child.label }}</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

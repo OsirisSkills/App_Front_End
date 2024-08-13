@@ -1,0 +1,36 @@
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+
+.profile-img {
+  max-height: 2.75rem;
+  margin-right: 0.25rem;
+}
+
+nav{
+  margin-right: 1rem;
+  font-size: 15px;
+  font-weight: lighter;
+}
+
+nav i{
+  font-size: 1.5rem;
+  padding-left: 1rem;
+}
+
+nav i:hover{
+  cursor: pointer;
+  color: red;
+}
+
+button {
+  font-size: 2rem;
+}
+
+.header {
+  position: sticky;
+  transition: all 0.5s;
+  height: 60px;
+  background-color: #3C4B64;
+  color: white;
+}

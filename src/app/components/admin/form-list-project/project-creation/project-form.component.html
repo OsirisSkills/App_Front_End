@@ -1,0 +1,144 @@
+<div class="my-container container-fluid">
+  <div class="row d-flex ms-2 mt-2">
+    <!--BreadCrumb-->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/home">Accueil</a></li>
+        <li class="breadcrumb-item"><a routerLink="/category">Projets</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Nouveau Projet</li>
+      </ol>
+    </nav>
+  </div>
+
+  <h1 class="text-center mb-5 mt-5">Ajouter un projet</h1>
+
+  <div class="container">
+    <form [formGroup]="projectForms" (ngSubmit)="onSubmit()">
+      <div class="row d-flex justify-content-center mt-4 g-3">
+        <div class="col-md-6">
+          <!--Input ProjectName-->
+          <label for="inputProjectName">Nom du projet</label>
+          <input type="text" class="form-control" id="inputProjectName" placeholder="" formControlName="projectName"
+            required>
+          <div *ngIf="projectName.invalid && (projectName.dirty || projectName.touched)" class="invalid-input">
+            <div *ngIf="projectName.errors['required']">
+              Le nom d'utilisateur est requis.
+            </div>
+            <div *ngIf="projectName.errors['minlength']">
+              Le nom d'utilisateur doit avoir une longueur minimale de
+              {{projectName.errors['minlength']['requiredLength']}} caractères.
+            </div>
+            <div *ngIf="projectName.errors['maxlength']">
+              Le nom d'utilisateur ne peut dépasser la limite de {{projectName.errors['maxlength']['requiredLength']}}
+              caractères.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <!--StartDate of Project-->
+          <label for="inputProjectDateDebut">Date de début</label>
+          <input type="date" class="form-control" id="inputProjectDateDebut" placeholder="" formControlName="startDate">
+          <div *ngIf="startDate.invalid && (startDate.dirty || startDate.touched)" class="invalid-input">
+            <div *ngIf="startDate.errors['required']">
+              Une date de début est requise.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row g-3 mt-4">
+        <div class="col-md-6">
+          <!--End Date of Project-->
+          <label for="inputProjectDateFin">Date de fin</label>
+          <input type="date" class="form-control" id="inputProjectDateFin" placeholder="" formControlName="endDate">
+          <div *ngIf="endDate.invalid && (endDate.dirty || endDate.touched)" class="invalid-input">
+            <div *ngIf="endDate.errors['required']">
+              Une date de fin est requise.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <!--Chef Of Project-->
+          <label for="inputProjectChefProjet" class="form-label">Chef de projet</label>
+          <select class="form-control" id="inputProjectChefProjet" formControlName="chefProjet">
+            <option *ngFor="let chief of (chiefs | async)" [ngValue]="chief.id">{{chief.firstName}} {{chief.lastName}}</option>
+          </select>
+          <div *ngIf="chefProjet.invalid && (chefProjet.dirty || chefProjet.touched)" class="invalid-input">
+            <div *ngIf="chefProjet.errors['required']">
+              Un chef de projet est requis.
+            </div>
+            <div *ngIf="chefProjet.errors['maxlength']">
+              Un chef de projet ne peut dépasser la limite de {{chefProjet.errors['maxlength']['requiredLength']}} caractères.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row g-3 mt-4">
+        <div class="col-md-6">
+          <!--Input Links-->
+          <label for="inputProjectLien" class="form-label">Liens</label>
+          <input type="text" class="form-control" id="inputProjectLien" placeholder="" formControlName="url">
+          <div *ngIf="url.invalid && (url.dirty || url.touched)" class="invalid-input">
+            <div *ngIf="url.errors['required']">
+              Un lien de projet est requis.
+            </div>
+            <div *ngIf="url.errors['maxlength']">
+              Un lien ne peut dépasser la limite de {{url.errors['maxlength']['requiredLength']}} caractères.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <!-- Input Category -->
+          <label for="inputProjectCategorie" class="form-label">Catégorie</label>
+          <select class="form-control" id="inputProjectCategorie" formControlName="categoryId">
+            <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+          </select>
+          <div *ngIf="categoryId.invalid && (categoryId.dirty || categoryId.touched)" class="invalid-input">
+            <div *ngIf="categoryId.errors['maxlength']">
+              Une catégorie ne peut dépasser la limite de {{categoryId.errors['maxlength']['requiredLength']}} caractères.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row g-3 mt-4">
+        <div class="col-md-6">
+          <!-- Status of Project -->
+          <label for="inputProjectStatus">Status</label>
+          <select class="form-control" name="status" id="inputProjectStatus" formControlName="status">
+            <option *ngFor="let status of statuses" [value]="status.value">{{ status.description }}</option>
+          </select>
+          <div *ngIf="status.invalid && (status.dirty || status.touched)" class="invalid-input">
+            <div *ngIf="status.errors['required']">
+              Un statut est requis.
+            </div>
+          </div>
+        </div>
+<!--        <div class="col-md-6">-->
+<!--          &lt;!&ndash;Project Groups Input&ndash;&gt;-->
+<!--          <label for="inputProjectMembre" class="form-label">Groupe de projet</label>-->
+<!--          <input type="text" [(ngModel)]="project.projectMembersIds" name="membre" class="form-control"-->
+<!--                 id="inputProjectMembre" placeholder="">-->
+<!--        </div>-->
+      </div>
+      <div class="row g-3 mt-4">
+        <div class="col-md-6">
+          <!--Description Input-->
+          <label for="inputProjectDescription" class="form-label">Description</label>
+          <input type="text" class="form-control" id="inputProjectDescription" placeholder=""
+                 formControlName="description">
+          <div *ngIf="description.invalid && (description.dirty || description.touched)" class="invalid-input">
+            <div *ngIf="description.errors['maxlength']">
+              Un lien ne peut dépasser la limite de {{description.errors['maxlength']['requiredLength']}} caractères.
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Button Group-->
+      <div class="col-md-6 mt-4 text-center">
+        <div class="foot-buttons">
+          <button type="submit" class="btn btn-primary" >Sauvegarder</button>
+          <button type="button" class="btn btn-danger" routerLink="/liste">Annuler</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

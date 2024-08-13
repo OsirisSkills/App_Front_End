@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <h4 class="modal-title">Confirmer la suppression</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('canceled')"></button>
+</div>
+<div class="modal-body">
+  <p>{{ message }}</p>
+  <p *ngIf="objectName.length > 0"><b>{{ objectName}}</b></p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-danger" (click)="activeModal.close('confirmed')">Supprimer</button>
+  <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss('canceled')">Annuler</button>
+</div>
+

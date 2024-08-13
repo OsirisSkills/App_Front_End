@@ -1,0 +1,123 @@
+<div class="my-container container-fluid">
+    <div class="row d-flex ms-2 mt-2">
+        <!--BreadCrumb-->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/home">Accueil</a></li>
+                <li class="breadcrumb-item"><a routerLink="/liste">Projets</a></li>
+                <li aria-current="page" class="breadcrumb-item active">Information du projet</li>
+            </ol>
+        </nav>
+    </div>
+    <h1 class="text-center mb-5 mt-5">Information du Projet</h1>
+    <div class="container project-form">
+        <div class="row g-3 mt-1">
+            <div class="col-md-6">
+                <!--Project Name-->
+                <label class="form-label">Nom du projet</label>
+                <div class="form-control">{{project.projectName || "N/A"}}</div>
+            </div>
+            <div class="col-md-6">
+                <!--Chef of Project-->
+                <label class="form-label">Chef de projet</label>
+                <div class="form-control">{{project.projectChiefId || "N/A"}}</div>
+            </div>
+        </div>
+
+        <div class="row g-3 pt-4 ">
+            <div class="col-md-6">
+                <!--Start Date-->
+                <label class="form-label">Date de début</label>
+                <div class="form-control">{{project.startDate | date: 'dd/MM/yyyy' || "N/A"}}</div>
+            </div>
+            <div class="col-md-6">
+                <!--End Date-->
+                <label class="form-label">Date de fin</label>
+                <div class="form-control">{{project.endDate | date: 'dd/MM/yyyy' || "N/A"}}</div>
+            </div>
+        </div>
+
+        <div class="row g-3 pt-4">
+            <div class="col-md-6">
+                <!--Links-->
+                <label class="form-label">URL</label>
+                <div class="form-control">
+                    <a *ngIf="project.url && project.url !== 'N/A'" [href]="project.url" target="_blank">{{project.url}}</a>
+                    <span *ngIf="!project.url || project.url === 'N/A'">N/A</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!--Category-->
+                <label class="form-label">Catégorie</label>
+                <div class="form-control">{{categoryName || "N/A"}}</div>
+            </div>
+        </div>
+
+        <div class="row g-3 pt-4">
+            <div class="col-md-6">
+                <!--Status-->
+                <label class="form-label">Status</label>
+                <div class="form-control">{{project.status || "N/A"}}</div>
+            </div>
+            <div class="col-md-6">
+                <!--Description-->
+                <label class="form-label">Groupe de projet</label>
+                <div class="form-control">
+                    <ng-container *ngFor="let member of members; let last = last">
+                        <a [routerLink]="['/members', member.id]" target="_blank" rel="noopener noreferrer">{{ member.firstName }} {{ member.lastName }}</a>
+                        <ng-container *ngIf="!last">, </ng-container>
+                    </ng-container>
+                    <ng-container *ngIf="!members || members.length === 0">
+                        N/A
+                    </ng-container>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <!--Description-->
+                <label class="form-label">Description</label>
+                <div class="form-control">{{project.description || "N/A"}}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <label class="form-label" for="tableProjectFiles">Fichiers liés au projet</label>
+                <table id="tableProjectFiles">
+                    <thead>
+                    <tr>
+                        <th>Nom de fichier</th>
+                        <th>Extension</th>
+                        <th>Type</th>
+                        <th>Taille</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let files of projectFiles">
+                        <td class="table-filename">{{files.filename.length > 200 ? (files.filename | slice:0:200) + '...' : files.filename}}</td>
+                        <td>{{files.extension}}</td>
+                        <td>{{files.fileType}}</td>
+                        <td>{{getAutoSize(files.size)}}</td>
+                        <td>
+                            <button (click)="download(files)" class="btn btn-info" type="button">
+                                <span class="bi bi-download"></span>
+                            </button>
+                            <button (click)="view(files)" class="btn btn-danger" type="button">
+                                <span class="bi bi-eye"></span>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6 pt-4 text-center">
+            <!--Button-->
+            <div class="foot-buttons">
+                <button class="btn btn-danger" routerLink="/liste" type="button">Retour</button>
+            </div>
+        </div>
+    </div>
+</div>

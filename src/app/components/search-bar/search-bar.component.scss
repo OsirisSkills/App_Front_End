@@ -1,0 +1,74 @@
+.search {
+  position: relative;
+}
+
+.search-container button {
+  margin-left: 1rem;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+}
+
+// Input field
+.search-input {
+  border: 1px solid black;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  width: 100%;
+  min-width: 5rem;
+  max-width: 40rem;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+  background-image: url("~bootstrap-icons/icons/search.svg");
+  background-repeat: no-repeat;
+  background-position: 0.75rem 50%;
+  background-size: 1.25rem 1.25rem;
+  box-sizing: border-box;
+  text-indent: 2rem;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.menu-suggestions {
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 0.2rem;
+  padding: 0.5rem;
+  top: 100%;
+  height: auto;
+  // automatically adjust width to input field
+  width: 100%;
+  margin-top: 0.5rem;
+
+  /* Autres styles ici (par exemple, bordures, ombres, etc.) */
+}
+//
+
+
+// on hover
+.menu-suggestion-item:hover {
+  cursor: pointer;
+  background: lightblue;
+}
+
+.input-and-suggestions {
+  position: relative;
+}
+
+.search-container {
+  display: flex; // pour que la largeur s'adapte à son contenu
+  // le reste de votre style
+}
+
+.menu-suggestion-item{
+  color: black;
+}

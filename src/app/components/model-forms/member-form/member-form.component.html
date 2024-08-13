@@ -1,0 +1,89 @@
+<div class="container category-form">
+
+    <h1>Ajouter un nouveau membre</h1>
+
+    <form>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label for="inputMemberUsername" class="form-label">Identifiant</label>
+                <input type="text" class="form-control" id="inputMemberUsername" placeholder="ex: jdoe">
+            </div>
+            <div class="col-md-6">
+                <label for="inputMemberEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="inputMemberEmail" placeholder="ex: jdoe@jehann.fr">
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label for="inputMemberPassword" class="form-label">Mot de passe</label>
+                <input type="password" class="form-control" id="inputMemberPassword"
+                    placeholder="Entrez le mot de passe">
+            </div>
+            <div class="col-md-6">
+                <label for="inputMemberPasswordConfirm" class="form-label">Confirmez le mot de passe</label>
+                <input type="password" class="form-control" id="inputMemberPasswordConfirm"
+                    placeholder="Confirmez le mot de passe">
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label for="inputMemberLastName" class="form-label">Prénom</label>
+                <input type="tex+t" class="form-control" id="inputMemberLastName" placeholder="ex: John">
+            </div>
+            <div class="col-md-6">
+                <label for="inputMemberName" class="form-label">Nom</label>
+                <input type="text" class="form-control" id="inputMemberName" placeholder="ex: Doe">
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label for="selectMemberSex" class="form-label">Sexe</label>
+                <select class="form-select" name="sex" id="selectMemberSex">
+                    <option selected>Selectionnez le sexe</option>
+                    <option value="Man">Homme</option>
+                    <option value="Woman">Femme</option>
+                    <option value="Other">Autre</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="selectMemberRole" class="form-label">Role</label>
+                <select class="form-select" name="role" id="selectMemberRole">
+                    <option selected>Selectionnez le role</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Project">Chef de projet</option>
+                    <option value="User">Utilisateur</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label for="inputMemberWorkplace" class="form-label">Lieu de travail</label>
+                <input type="text" class="form-control" id="inputMemberWorkplace" placeholder="ex: Strasbourg">
+            </div>
+            <div class="col-md-6">
+                <label for="inputMemberPhone" class="form-label">Téléphone</label>
+                <input type="email" class="form-control" id="inputMemberPhone" placeholder="ex: 01 02 03 04 05">
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-md-12">
+                <label for="inputMemberAdress" class="form-label">Adresse</label>
+                <textarea class="form-control" name="" id="inputMemberAdress" rows="3"
+                    placeholder="ex: 5 Rue de Sarrelouis, 67000 Strasbourg"></textarea>
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-md-6 foot-buttons">
+                <button type="button" class="btn btn-primary">Sauvegarder</button>
+                <button type="button" class="btn btn-secondary">Annuler</button>
+            </div>
+        </div>
+
+    </form>
+</div>

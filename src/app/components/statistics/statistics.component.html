@@ -1,0 +1,294 @@
+<div class="my-container container-fluid" xmlns="http://www.w3.org/1999/html">
+  <div class="row d-flex ms-2 mt-2">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+      <p><a routerLink="/home">Accueil</a> / Statistiques </p>
+    </div>
+  </div>
+  <div class="text-center h2">Statistiques des projets</div>
+  <!-- Stats Members -->
+  <h2 class="h3">Statistiques des membres</h2>
+  <!-- Stats raw Members -->
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title h5">Nombre total de membres</h3>
+          <div class="card-text">
+            <p class="h5">{{statsApi.memberStats.memberCount}} membres</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="row">
+
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="h5">Disponibilité des membres</h3>
+          <div class="card-text">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" *ngFor="let item of statsApi.memberStats.memberByAvailability | keyvalue">
+                {{item.key}} : {{item.value}}
+              </li>
+            </ul>
+            <app-pie-chart [pieChartRecord]="statsApi.memberStats.memberByAvailability"></app-pie-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title h5">Localisation des membres</h3>
+          <div class="card-text">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" *ngFor="let item of statsApi.memberStats.memberByLocation | keyvalue">
+                {{item.key}} : {{item.value}}
+              </li>
+            </ul>
+            <app-pie-chart [pieChartRecord]="statsApi.memberStats.memberByLocation"></app-pie-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title h5">Rôle membres</h3>
+          <div class="card-text">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" *ngFor="let item of statsApi.memberStats.memberByRole | keyvalue">
+                {{item.key | memberRoleDisplayName}} : {{item.value}}
+              </li>
+            </ul>
+            <app-pie-chart [pieChartRecord]="statsApi.memberStats.memberByRole"></app-pie-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="h5">Sexe des membres</h3>
+          <div class="card-text">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" *ngFor="let item of statsApi.memberStats.memberBySex | keyvalue">
+                {{item.key}} : {{item.value}}
+              </li>
+            </ul>
+            <app-pie-chart [pieChartRecord]="statsApi.memberStats.memberBySex"></app-pie-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats Projects -->
+  <h2 class="h3">Statistiques des projets</h2>
+  <!-- Stats raw Projects -->
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title h5">Nombre total de projets</h3>
+          <div class="card-text">
+            <p class="h5">{{statsApi.projectStats.countProject}} projets</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title h5">Durée moyenne des projets</h3>
+          <div class="card-text">
+            <p class="h6">{{statsApi.projectStats.averageDuration}} jours</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title h5">Moyenne de projets par membre</h3>
+          <div class="card-text">
+            <p class="h6">{{statsApi.projectStats.averageProjectByMembers}} projets</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title h5">Moyenne de projets par membre (filtré)</h3>
+          <div class="card-text">
+            <p class="h6">{{statsApi.projectStats.averageProjectByMembersFiltered}} projets</p>
+            <p>Note : Seul les membres avec au moins un projet attribué est comptabilisé ici.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="row">
+
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title h5">Nombre total de projets par catégorie</h3>
+          <div class="card-text">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" *ngFor="let item of statsApi.projectStats.categoryCounts | keyvalue">
+                {{item.key}} : {{item.value}}
+              </li>
+            </ul>
+            <app-pie-chart [pieChartRecord]="statsApi.projectStats.categoryCounts"></app-pie-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="h5">Membre par projet</h3>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" *ngFor="let item of statsApi.projectStats.membersByProject | keyvalue">
+              {{item.key}} : {{item.value}} membre
+            </li>
+          </ul>
+          <app-pie-chart [pieChartRecord]="statsApi.projectStats.membersByProject"></app-pie-chart>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title h5">État des projets</h3>
+          <div class="card-text">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" *ngFor="let item of statsApi.projectStats.statusCounts | keyvalue">
+                {{item.key | projectStateDisplayName }} : {{item.value}}
+              </li>
+            </ul>
+            <app-pie-chart [pieChartRecord]="statsApi.projectStats.statusCounts"></app-pie-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats ProjectFiles -->
+  <h2 class="h3">Statistiques des fichiers</h2>
+  <!-- Stats raw ProjectFiles -->
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title h5">Nombre total de fichiers</h3>
+          <div class="card-text">
+            <p class="h5">{{statsApi.projectFileStats.projectFileCount}} fichiers</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="h5">Taille totale des fichiers</h3>
+          <div class="card-text">
+            <p class="h6">{{convertSizeToHumanReadable(statsApi.projectFileStats.projectFileTotalSize)}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title h5">Tailles moyenne des fichiers par projet</h3>
+          <div class="card-text">
+            <p class="h6">{{convertSizeToHumanReadable(statsApi.projectFileStats.projectFileAverageSize)}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="row">
+
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title h5">Nombres de fichier par projet</h3>
+          <div class="card-text">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" *ngFor="let item of statsApi.projectFileStats.projectFileSizeByProject | keyvalue">
+                {{item.key}} : {{convertSizeToHumanReadable(item.value)}}
+              </li>
+            </ul>
+            <app-pie-chart [pieChartRecord]="statsApi.projectFileStats.projectFileSizeByProject"></app-pie-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="h5">Nombre total de fichier par type</h3>
+          <div class="card-text">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" *ngFor="let item of statsApi.projectFileStats.projectFileCountByProject | keyvalue">
+                {{item.key}} : {{item.value}}
+              </li>
+            </ul>
+            <app-pie-chart [pieChartRecord]="statsApi.projectFileStats.projectFileCountByProject"></app-pie-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats Category -->
+  <h2 class="h3">Statistiques des catégories</h2>
+  <!-- Stats raw Category -->
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title h5">Nombre total de catégories</h3>
+          <div class="card-text">
+            <p class="h5">{{statsApi.categoryStats.categoryCount}} catégories</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title h5">Nom des catégories</h3>
+          <div class="card-text">
+            <p class="h6">{{ getJoinedCategoryNames() }}</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category Pies & stuff  -->
+  <div class="row">
+
+  </div>
+
+</div>

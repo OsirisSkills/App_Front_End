@@ -1,0 +1,173 @@
+<div class="my-container container-fluid">
+  <div class="row d-flex ms-2 mt-2">
+    <!--BreadCrumb-->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/home">Accueil</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Membre</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="row">
+    <div class="col">
+      <app-search-bar
+        [displayFn]="displayMember"
+        [column]="'firstName'"
+        (searchValueChange)="searchValueResultHandler($event)">
+      </app-search-bar>
+    </div>
+    <div class="col my button">
+      <button class="btn btn-success me-2 bi bi-plus-lg float-end" routerLink="new" name="newCategoryButton">Nouveau
+        membre</button>
+    </div>
+  </div>
+  <div>
+    <app-page-size-selector
+      [pageSizeSelected]="pageSize"
+      (pageSizeChange)="onPageSizeChange($event)">
+    </app-page-size-selector>
+  </div>
+  <table class="table table-striped">
+
+    <thead>
+    <tr>
+      <!--        <th>Id</th>-->
+      <th>Identifiant</th>
+      <th>Adresse</th>
+      <th>Email</th>
+      <th>Prénom</th>
+      <th>Nom</th>
+      <th>Location</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let member of membersApi">
+      <td>{{ member.userName }}</td>
+      <td>{{ member.address }}</td>
+      <td>{{ member.email }}</td>
+      <td>{{ member.firstName }}</td>
+      <td>{{ member.lastName }}</td>
+      <td>{{ member.location }}</td>
+      <td>
+        <button class="btn btn-primary me-2" routerLink="{{ member.id}}">
+          <span class="bi bi-eye"></span>
+        </button>
+        <button class="btn btn-warning me-2" routerLink="{{ member.id }}/edit">
+          <span class="bi bi-pencil"></span>
+        </button>
+        <button class="btn btn-danger me-2" (click)="deleteMember(member.id)">
+          <span class="bi bi-trash"></span>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <app-pagination
+    [quantityOfItems]="quantityOfMember"
+    (pageChange)="onPageChange($event)">
+  </app-pagination>
+</div>
+
+
+<!--<div class="my-container container-fluid">-->
+<!--  <div class="row d-flex ms-2 mt-2">-->
+<!--    &lt;!&ndash;BreadCrumb&ndash;&gt;-->
+<!--    <nav aria-label="breadcrumb">-->
+<!--      <ol class="breadcrumb">-->
+<!--        <li class="breadcrumb-item"><a routerLink="/home">Accueil</a></li>-->
+<!--        <li class="breadcrumb-item active" aria-current="page">Membre</li>-->
+<!--      </ol>-->
+<!--    </nav>-->
+
+<!--  </div>-->
+<!--  <div id="members-search-header">-->
+<!--    <nav class="d-flex justify-content-between">-->
+<!--      <div class="d-flex align-items-center">-->
+<!--      </div>-->
+<!--      <div class="search-container">-->
+<!--        <div class="input-container">-->
+<!--          <input type="text" class="search-input" [(ngModel)]="searchTerm" name="searchInput">-->
+<!--        </div>-->
+<!--        &lt;!&ndash;          <button class="btn btn-primary" (click)="search()" [disabled]="searchTerm === ''">Rechercher</button>&ndash;&gt;-->
+<!--        <button class="btn btn-outline-primary my-2 my-sm-0" (click)="search()" type="submit">Recherche</button>-->
+<!--        &lt;!&ndash;          <button class="btn btn-primary" (click)="reset()" [disabled]="searchTerm === ''">Réinitialiser</button>&ndash;&gt;-->
+<!--        &lt;!&ndash;          <button class="btn btn-primary" (click)="generateMember()">Générer</button>&ndash;&gt;-->
+<!--      </div>-->
+<!--      <button class="btn btn-primary me-2 bi bi-plus-lg" routerLink="new" name="newMemberButton">Nouveau membre</button>-->
+<!--    </nav>-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <label for="pageSize">Nombre d'éléments par page:</label>-->
+<!--    <select class="form-select form-select-sm" name="pageSize" id="pageSize" [(ngModel)]="pageSize"-->
+<!--      (ngModelChange)="onPageSizeChange($event)">-->
+<!--      <option *ngFor="let option of pageSizes" [value]="option">{{option}}</option>-->
+<!--    </select>-->
+<!--  </div>-->
+<!--  <table class="table table-striped">-->
+
+<!--    <thead>-->
+<!--      <tr>-->
+<!--        &lt;!&ndash;        <th>Id</th>&ndash;&gt;-->
+<!--        <th>Identifiant</th>-->
+<!--        <th>Version</th>-->
+<!--        <th>Addresse</th>-->
+<!--        <th>Email</th>-->
+<!--        <th>Prénom</th>-->
+<!--        <th>Nom</th>-->
+<!--        <th>Role</th>-->
+<!--        <th>Sexe</th>-->
+<!--        <th>Location</th>-->
+<!--        <th>Tél</th>-->
+<!--        <th>Actions</th>-->
+<!--      </tr>-->
+<!--    </thead>-->
+
+<!--    <tbody>-->
+<!--      <tr *ngFor="let member of membersApi">-->
+<!--        <td>{{ member.userName }}</td>-->
+<!--        <td>{{ member.version }}</td>-->
+<!--        <td>{{ member.address }}</td>-->
+<!--        <td>{{ member.email }}</td>-->
+<!--        <td>{{ member.firstName }}</td>-->
+<!--        <td>{{ member.lastName }}</td>-->
+<!--        <td>{{ member.role }}</td>-->
+<!--        <td>{{ member.sexe }}</td>-->
+<!--        <td>{{ member.location }}</td>-->
+<!--        <td>{{ member.numberPhone }}</td>-->
+<!--        <td>-->
+<!--          <button class="btn btn-primary me-2" routerLink="{{ member.id}}">-->
+<!--            <span class="bi bi-eye"></span>-->
+<!--          </button>-->
+<!--          <button class="btn btn-warning me-2" routerLink="{{ member.id }}/edit">-->
+<!--            <span class="bi bi-pencil"></span>-->
+<!--          </button>-->
+<!--          <button class="btn btn-danger me-2" (click)="deleteMember(member.id)">-->
+<!--            <span class="bi bi-trash"></span>-->
+<!--          </button>-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--    </tbody>-->
+<!--  </table>-->
+<!--  <div class="pagination" *ngIf="mathCeil() > 1">-->
+<!--    <button class="btn btn-outline-dark me-1" *ngIf="currentPage > 1" (click)="currentPage = 1"-->
+<!--      [disabled]="currentPage === 1">-->
+<!--      <span class="bi bi-chevron-double-left"></span>-->
+<!--    </button>-->
+<!--    <button class="btn btn-outline-dark me-1" *ngIf="currentPage > 1" (click)="currentPage = currentPage - 1"-->
+<!--      [disabled]="currentPage === 1">-->
+<!--      <span class="bi bi-chevron-left"></span>-->
+<!--    </button>-->
+<!--    <button class="paginator btn btn-outline-dark me-1" *ngFor="let page of numPages()" (click)="currentPage = page"-->
+<!--      [disabled]="currentPage === page">{{ page }}</button>-->
+<!--    <button class="btn btn-outline-dark me-1" *ngIf="currentPage < mathCeil()" (click)="currentPage = currentPage + 1"-->
+<!--      [disabled]="currentPage >= mathCeil()">-->
+<!--      <span class="bi bi-chevron-right"></span>-->
+<!--    </button>-->
+<!--    <button class="btn btn-outline-dark" *ngIf="currentPage < mathCeil()" (click)="currentPage = mathCeil()"-->
+<!--      [disabled]="currentPage >= mathCeil()">-->
+<!--      <span class="bi-chevron-double-right"></span>-->
+<!--    </button>-->
+<!--  </div>-->
+<!--</div>-->

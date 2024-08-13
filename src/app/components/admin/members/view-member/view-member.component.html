@@ -1,0 +1,110 @@
+<div class="my-container container-fluid">
+  <div class="d-flex ms-2 mt-2">
+    <!--BreadCrumb-->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/home">Accueil</a></li>
+        <li class="breadcrumb-item"><a routerLink="/members">Membres</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Information du membre</li>
+      </ol>
+    </nav>
+  </div>
+  <h1 class="text-center mb-5 mt-5">Information du membre</h1>
+  <div class="container category-form">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <!--Email-->
+        <label for="inputMemberUsername" class="form-label">Identifiant</label>
+        <input type="text" [ngModel]="member.userName" readonly name="userName" class="form-control"
+          id="inputMemberUsername" placeholder="ex: jdoe">
+      </div>
+      <div class="col-md-6">
+        <label for="inputMemberEmail" class="form-label">Email</label>
+        <input type="email" [ngModel]="member.email" readonly name="mail" class="form-control" id="inputMemberEmail"
+          placeholder="ex: jdoe@jehann.fr">
+      </div>
+    </div>
+
+    <div class="row g-3 pt-4">
+      <div class="col-md-6">
+        <!--FirstName-->
+        <label for="inputMemberLastName" class="form-label">Prénom</label>
+        <input type="text" [ngModel]="member.firstName" readonly name="firstName" class="form-control"
+          id="inputMemberLastName" placeholder="ex: John">
+      </div>
+      <div class="col-md-6">
+        <!--LastName-->
+        <label for="inputMemberName" class="form-label">Nom</label>
+        <input type="text" [ngModel]="member.lastName" readonly name="lastName" class="form-control"
+          id="inputMemberName" placeholder="ex: Doe">
+      </div>
+    </div>
+
+    <div class="row g-3 pt-4">
+
+      <div class="col-md-6">
+        <!--Address of Work-->
+        <label for="inputMemberWorkplace" class="form-label">Lieu de travail</label>
+        <input type="text" [ngModel]="member.location" readonly name="location" class="form-control"
+               id="inputMemberWorkplace" placeholder="ex: Strasbourg">
+      </div>
+
+      <div class="col-md-6">
+        <!--Role-->
+        <label for="selectMemberRole" class="form-label">Rôle</label>
+        <input type="text" [ngModel]="member.role" readonly name="role" id="selectMemberRole" class="form-control">
+      </div>
+    </div>
+
+    <div class="row g-3">
+      <label  class="form-label pt-4">Projet associé </label>
+      <div class="form-control mt-0">
+        <ng-container *ngFor="let project of projects; let last = last">
+          <a [routerLink]="['/liste', project.id]">{{ project.projectName }}</a>
+          <ng-container *ngIf="!last">, </ng-container>
+        </ng-container>
+        <ng-container *ngIf="!projects || projects.length === 0">
+          N/A
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="row g-3 pt-4">
+
+      <div class="col-md-6">
+        <!--Sexe-->
+        <label for="selectMemberSex" class="form-label">Sexe</label>
+        <input class="form-control" [ngModel]="member.sexe"  name="sex" id="selectMemberSex">
+      </div>
+
+
+      <div class="col-md-6">
+        <!--Number Phone-->
+        <label for="inputMemberPhone" class="form-label">Téléphone</label>
+        <input type="email" [ngModel]="member.numberPhone" readonly name="phone" class="form-control" id="inputMemberPhone"
+          placeholder="ex: 01 02 03 04 05">
+      </div>
+    </div>
+
+    <div class="row g-3 pt-4">
+      <div class="col-12">
+        <!--Addresse-->
+        <label for="inputMemberAddress" class="form-label">Adresse</label>
+        <textarea class="form-control" [ngModel]="member.address" readonly name="address" id="inputMemberAddress"
+          rows="3" placeholder="ex: 5 Rue de Sarrelouis, 67000 Strasbourg"></textarea>
+      </div>
+
+    </div>
+
+
+
+
+
+    <div class="col-md-6 mt-4 text-center">
+      <!--Button Groups-->
+      <div class="foot-buttons">
+        <button type="button" class="btn btn-danger" routerLink="/members">Retour</button>
+      </div>
+    </div>
+  </div>
+</div>

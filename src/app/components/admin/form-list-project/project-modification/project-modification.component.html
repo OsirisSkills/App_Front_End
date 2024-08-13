@@ -1,0 +1,181 @@
+<div class="my-container container-fluid">
+    <div class="d-flex ms-2 mt-2">
+        <!--BreadCrumb-->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/home">Accueil</a></li>
+                <li class="breadcrumb-item"><a routerLink="/liste">Projets</a></li>
+                <li aria-current="page" class="breadcrumb-item active">Modifier un projet</li>
+            </ol>
+        </nav>
+    </div>
+    <h1 class="text-center">Modifier un projet</h1>
+    <div class="container project-form">
+        <form class="row d-flex flex-column align-content-center" novalidate>
+            <div class="row g-3">
+
+                <div class="col-md-6 ">
+                    <!--ProjectName Input-->
+                    <label class="form-label" for="inputProjectName">Nom du projet</label>
+                    <input [(ngModel)]="project.projectName" class="form-control" id="inputProjectName" name="Name"
+                           placeholder=""
+                           type="text">
+                </div>
+
+                <div class="col-md-6">
+                    <!--Start Date of Project-->
+                    <label class="form-label" for="inputProjectDateDebut">Date de début</label>
+                    <input [(ngModel)]="project.startDate" class="form-control" id="inputProjectDateDebut" name="dateDebut"
+                           placeholder="" type="date">
+                </div>
+
+            </div>
+
+            <div class="row g-3">
+
+                <div class="col-md-6 ">
+                    <!--End Date of Project-->
+                    <label class="form-label" for="inputProjectDateFin">Date de fin</label>
+                    <input [(ngModel)]="project.endDate" class="form-control" id="inputProjectDateFin" name="dateFin"
+                           placeholder=""
+                           type="date">
+                </div>
+
+                <div class="col-md-6 ">
+                    <!--Project Chief input -->
+                    <label class="form-label" for="inputProjectChefProjet">Chef de projet</label>
+                    <select [(ngModel)]="project.projectChiefId" class="form-control" id="inputProjectChefProjet"
+                            name="chefProjet">
+                        <option *ngFor="let chief of selectedChiefMember" [value]="chief.id">{{ chief.name }} {{chief.id}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-md-6 ">
+                    <!--Links Input-->
+                    <label class="form-label" for="inputProjectLien">Liens</label>
+                    <input [(ngModel)]="project.url" class="form-control" id="inputProjectLien" name="lien" placeholder=""
+                           type="text">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label" for="inputProjectCategorie">Catégorie</label>
+                    <select [(ngModel)]="this.project.categoryId" class="form-control" id="inputProjectCategorie"
+                            name="categorie">
+                        <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <!-- Status Input -->
+                    <label class="form-label" for="inputProjectStatus">Status</label>
+                    <select [(ngModel)]="project.status" class="form-control" id="inputProjectStatus" name="status">
+                        <option *ngFor="let stat of status" [value]="stat.value">{{ stat.description }}</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label" for="inputProjectMembre">Groupe de projet</label>
+                    <input [value]="showSelectedMembers()" class="form-control mb-3" id="inputProjectMembre"
+                           placeholder="Nom des différents membres du groupe ici" readonly
+                           type="text">
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <!--Description-->
+                    <label class="form-label" for="inputProjectDescription">Description</label>
+                    <textarea [(ngModel)]="project.description" class="form-control" id="inputProjectDescription" name="description"
+                           placeholder="Description" type="text"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <div class="border p-2 selectMember">
+                        <div *ngFor="let mem of selectedMembers" class="form-check">
+                            <input (change)="onSelectionMember(mem)" [checked]="mem.selected"
+                                   class="form-check-input"
+                                   id="member{{ mem.id }}" type="checkbox">
+                            <label class="form-check-label" for="member{{ mem.id }}">
+                                {{ mem.name }}
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button (click)="selectAllMembers()" class="btn btn-primary mt-3" type="button">Tout
+                            sélectionner
+                        </button>
+                        <button (click)="deselectAllMembers()" class="btn btn-primary mt-3" type="button">Tout
+                            désélectionner
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md">
+                    <label for="formFileMultiple" class="form-label d-block">Téléverser un ou plusieurs fichier</label>
+                    <div class="mb-4">
+                        <div class="btn-group" id="formFileMultiple" role="group" aria-label="Upload files">
+                            <button class="btn btn-primary" [disabled]="!uploadFileButton" (click)="uploadFiles()" type="button">Upload</button>
+                            <button class="btn btn-secondary" (click)="clearFileInput()" type="button">Clear</button>
+                            <input class="form-control" [(ngModel)]="fileInputValue" [ngModelOptions]="{standalone: true}" (change)="onFileSelected($event)" multiple type="file">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md">
+                    <label class="form-label" for="tableProjectFiles">Fichiers liés au projet</label>
+                    <table id="tableProjectFiles">
+                        <thead>
+                        <tr>
+                            <th>Nom de fichier</th>
+                            <th>Type</th>
+                            <th>Taille</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let files of projectFiles">
+                            <!-- <td class="table-filename">{{files.filename.length > 50 ? (files.filename | slice:0:50) + '[...]' : files.filename}}.{{files.extension}}</td> -->
+                            <td class="table-filename">
+                                <!--                <span class="table-file-dynamic-text">{{files.filename}}</span>-->
+                                <!--                <span class="table-file-extension">.{{files.extension}}</span>-->
+                                {{files.filename}}.{{files.extension}}
+                            </td>
+                            <td class="table-file-type">{{files.fileType}}</td>
+                            <td class="table-file-size">{{getAutoSize(files.size)}}</td>
+                            <td class="table-file-actions">
+                                <button (click)="downloadFile(files)" class="btn btn-info" type="button">
+                                    <span class="bi bi-download"></span>
+                                </button>
+                                <button (click)="viewFile(files)" class="btn btn-primary" type="button">
+                                    <span class="bi bi-eye"></span>
+                                </button>
+                                <button (click)="deleteFile(files)" class="btn btn-danger" type="button">
+                                    <span class="bi bi-trash"></span>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="col-md-6 mt-4 text-center">
+                <!--Button Group-->
+                <div aria-label="Basic example" class="btn-group pt-4 mb-4" role="group">
+                    <button (click)="updateProject()" class="btn btn-primary" type="button">Sauvegarder</button>
+                    <button class="btn btn-danger" routerLink="/liste" type="button">Annuler</button>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+
+</div>

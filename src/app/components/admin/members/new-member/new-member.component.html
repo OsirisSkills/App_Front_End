@@ -1,0 +1,201 @@
+<div class="my-container container-fluid">
+  <div class="d-flex ms-2 mt-2">
+    <!--BreadCrumb-->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/home">Accueil</a></li>
+        <li class="breadcrumb-item"><a routerLink="/members">Membres</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Modifier un membre</li>
+      </ol>
+    </nav>
+  </div>
+  <h1 class="text-center mb-5 mt-5">Nouveau membre</h1>
+  <div class="container category-form">
+    <form [formGroup]="memberForm" (ngSubmit)="onSubmit()">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <!--UserName Input-->
+          <label for="userName">Nom d'utilisateur</label>
+          <input type="text" class="form-control" id="userName" placeholder="jdoe" formControlName="userName" required>
+          <div *ngIf="userName.invalid && (userName.dirty || userName.touched)" class="invalid-input">
+
+            <div *ngIf="userName.errors['required']">
+              Le nom d'utilisateur est requis.
+            </div>
+            <div *ngIf="userName.errors['minlength']">
+              Le nom d'utilisateur doit avoir une longueur minimale de
+              {{userName.errors['minlength']['requiredLength']}} caractères.
+            </div>
+            <div *ngIf="userName.errors['maxlength']">
+              Le nom d'utilisateur ne peut dépasser la limite de {{userName.errors['maxlength']['requiredLength']}}
+              caractères.
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-6">
+          <!--Email Input-->
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="jdoe@jehann.fr" formControlName="email">
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-input">
+
+            <div *ngIf="email.errors['required']">
+              Une adresse mail est requise.
+            </div>
+            <div *ngIf="email.errors['maxlength']">
+              L'adresse mail ne peut dépasser la limite de {{email.errors['maxlength']['requiredLength']}} caractères.
+            </div>
+            <div *ngIf="email.errors['email']">
+              Veuillez entrer une adresse mail valide.
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--        <div class="row g-3">-->
+      <!--          <div class="col-md-6">-->
+      <!--            <label for="password">Mot de passe</label>-->
+      <!--            <input type="password" class="form-control" id="password" placeholder="Entrez votre mot de passe" formControlName="password">-->
+      <!--            <div *ngIf="password.invalid && (password.dirty || password.touched)"-->
+      <!--                 class="invalid-input">-->
+      <!--              <div *ngIf="password.errors['passwordRequirements']">-->
+      <!--                Le mot de passe doit contenir au moins 1 minuscule, 1 majuscule, 1 chiffre et 1 caractère spécial.-->
+      <!--              </div>-->
+      <!--              <div *ngIf="password.errors['minlength']">-->
+      <!--                Le mot de passe doit avoir une longueur minimale de {{password.errors['minlength']['requiredLength']}} caractères.-->
+      <!--              </div>-->
+      <!--              <div *ngIf="password.errors['maxlength']">-->
+      <!--                Le mot de passe ne peut dépasser la limite de {{password.errors['maxlength']['requiredLength']}} caractères.-->
+      <!--              </div>-->
+      <!--            </div>-->
+      <!--          </div>-->
+      <!--          <div class="col-md-6">-->
+      <!--            <label for="passwordConfirmation">Confirmez le mot de passe</label>-->
+      <!--            <input type="password" class="form-control" id="passwordConfirmation" placeholder="Confirmez votre mot de passe" formControlName="passwordConfirm">-->
+      <!--            <div *ngIf="passwordConfirm.invalid && (passwordConfirm.dirty || passwordConfirm.touched)"-->
+      <!--                 class="invalid-input">-->
+
+      <!--              <div *ngIf="passwordConfirm.errors['passwordRequirements']">-->
+      <!--                Le mot de passe doit contenir au moins 1 minuscule, 1 majuscule, 1 chiffre et 1 caractère spécial.-->
+      <!--              </div>-->
+      <!--              <div *ngIf="passwordConfirm.errors['minlength']">-->
+      <!--                Le mot de passe doit avoir une longueur minimale de {{passwordConfirm.errors['minlength']['requiredLength']}} caractères.-->
+      <!--              </div>-->
+      <!--              <div *ngIf="passwordConfirm.errors['maxlength']">-->
+      <!--                Le mot de passe ne peut dépasser la limite de {{passwordConfirm.errors['maxlength']['requiredLength']}} caractères.-->
+      <!--              </div>-->
+      <!--            </div>-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <div class="row g-3 pt-4">
+        <div class="col-md-6">
+          <!--FirstName Input-->
+          <label for="firstName">Prénom</label>
+          <input type="text" class="form-control" id="firstName" placeholder="John" formControlName="firstName">
+          <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="invalid-input">
+
+            <div *ngIf="firstName.errors['required']">
+              Un prénom est requis.
+            </div>
+            <div *ngIf="firstName.errors['minlength']">
+              Le prénom doit avoir une longueur minimale de {{firstName.errors['minlength']['requiredLength']}}
+              caractères.
+            </div>
+            <div *ngIf="firstName.errors['maxlength']">
+              Le prénom ne peut dépasser la limite de {{firstName.errors['maxlength']['requiredLength']}} caractères.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <!--LastName Input-->
+          <label for="lastName">Nom</label>
+          <input type="text" class="form-control" id="lastName" placeholder="Doe" formControlName="lastName">
+          <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="invalid-input">
+
+            <div *ngIf="lastName.errors['required']">
+              Un nom est requis.
+            </div>
+            <div *ngIf="lastName.errors['minlength']">
+              Le nom doit avoir une longueur minimale de {{lastName.errors['minlength']['requiredLength']}} caractères.
+            </div>
+            <div *ngIf="lastName.errors['maxlength']">
+              Le nom ne peut dépasser la limite de {{lastName.errors['maxlength']['requiredLength']}} caractères.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row g-3 pt-4">
+                  <div class="col-md-6">
+                    <label for="selectMemberSex" class="form-label">Sexe</label>
+                    <select class="form-select" id="selectMemberSex" formControlName="sexe">
+                      <option value="M">Homme</option>
+                      <option value="F">Femme</option>
+                      <option value="O">Autre</option>
+                    </select>
+                    <div *ngIf="sexe.invalid && (sexe.dirty || sexe.touched)"
+                         class="invalid-input">
+
+                      <div *ngIf="sexe.errors['required']">
+                        La selection du sexe est requise.
+                      </div>
+                    </div>
+                  </div>
+
+        <div class="col-md-6">
+          <!--Role Input-->
+          <label for="selectMemberRole" class="form-label">Role</label>
+          <select class="form-select" id="selectMemberRole" formControlName="role">
+            <option value="Manager">{{memberRole.MANAGER}}</option>
+            <option value="ChiefProject">{{memberRole.PROJECT_MANAGER}}</option>
+            <option value="User">CLIENT</option>
+          </select>
+          <div *ngIf="role.invalid && (role.dirty || role.touched)" class="invalid-input">
+
+            <div *ngIf="role.errors['required']">
+              La selection du role est requise.
+            </div>
+          </div>
+        </div>
+      </div>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="inputMemberWorkplace" class="form-label">Lieu de travail</label>
+                  <input type="text" class="form-control" id="inputMemberWorkplace" placeholder="ex: Strasbourg" formControlName="location">
+                  <div *ngIf="role.invalid && (role.dirty || role.touched)"
+                       class="invalid-input">
+
+                    <div *ngIf="role.errors['maxlength']">
+                      Le lieu de travail ne peut dépasser la limite de {{role.errors['maxlength']['requiredLength']}} caractères.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="inputMemberPhone" class="form-label">Téléphone</label>
+                  <input type="text" class="form-control" id="inputMemberPhone" placeholder="ex: 01 02 03 04 05" formControlName="numberPhone">
+                  <div *ngIf="numberPhone.invalid && (numberPhone.dirty || numberPhone.touched)"
+                       class="invalid-input">
+
+                    <div *ngIf="numberPhone.errors['maxlength']">
+                      Le numéro de téléphone ne peut dépasser la limite de {{numberPhone.errors['maxlength']['requiredLength']}} caractères.
+                    </div>
+                  </div>
+                </div>
+              </div>
+      <div class="row g-3 pt-4">
+        <div class="col-md-12">
+          <!--Address Input-->
+          <label for="inputMemberAddress" class="form-label">Adresse</label>
+          <textarea class="form-control" id="inputMemberAddress" rows="3"
+            placeholder="ex: 5 Rue de Sarrelouis, 67000 Strasbourg" formControlName="address"></textarea>
+        </div>
+      </div>
+
+      <div class="col-md-6 mt-4 text-center">
+        <!--Button Group-->
+        <div class="btn-group pt-4" method="post" role="group" aria-label="Basic example">
+          <button type="submit" class="btn btn-primary">Sauvegarder</button>
+          <button type="button" class="btn btn-danger" routerLink="/members">Annuler</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

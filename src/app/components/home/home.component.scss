@@ -1,0 +1,83 @@
+@import "bootstrap-icons/font/bootstrap-icons";
+
+////Grid zone
+//// Used to separate the page into 3 zones
+//
+//.header {
+//  grid-area: header;
+//}
+//
+//.sidebar {
+//  grid-area: sidebar;
+//}
+//
+//.my-content {
+//  grid-area: content;
+//}
+//
+//.my-container {
+//  display: grid;
+//  grid-template-columns: auto 1fr;
+//  grid-template-rows: auto 1fr;
+//  grid-template-areas:
+//    "sidebar header"
+//    "sidebar content";
+//  height: 100vh;
+//}
+
+
+// Content zone
+
+.welcome-zone{
+  //background-color: lightslategrey;
+  //background-color: #ADCBFD;
+  background-color: #BACDDB;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 2rem;
+
+}
+
+.welcome-zone .img{
+  height: 10rem;
+  width: 10rem;
+  float : right;
+  margin: 1rem;
+}
+
+.welcome-text{
+  font-weight: bold;
+  //font-size: large;
+  font-size: 25px;
+  color: white;
+}
+
+.selection-zone{
+  align-items: center;
+}
+
+.selection-zone .row{
+  margin: 1rem;
+}
+
+.selection-zone .bi{
+  font-size: 3rem;
+}
+
+.card:hover{
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

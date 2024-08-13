@@ -1,0 +1,72 @@
+<div class="my-container container-fluid">
+  <div class="row d-flex ms-2 mt-2">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/home">Accueil</a></li>
+        <li class="breadcrumb-item"><a routerLink="/category">Catégories</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Nouvelle Catégorie</li>
+      </ol>
+    </nav>
+  </div>
+
+  <form class="row d-flex flex-column align-items-center" [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+
+
+    <div class="col-md-6 mb-5 mt-5">
+      <h1 class="text-center">Ajouter une Catégorie</h1>
+    </div>
+
+
+    <div class="col-md-6 mt-4">
+      <!--Input the Category's Name-->
+      <label for="Name" class="form-label">Nom de la catégorie</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="API" formControlName="name">
+
+      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-input">
+
+        <div *ngIf="name.errors['required']">
+          Le nom d'utilisateur est requis.
+        </div>
+        <div *ngIf="name.errors['minlength']">
+          Le nom d'utilisateur doit avoir une longueur minimale de {{name.errors['minlength']['requiredLength']}}
+          caractères.
+        </div>
+        <div *ngIf="name.errors['maxlength']">
+          Le nom d'utilisateur ne peut dépasser la limite de {{name.errors['maxlength']['requiredLength']}} caractères.
+        </div>
+      </div>
+    </div>
+
+    <!--      <div class="col-md-6 mt-4">-->
+    <!--        <label for="Version" class="form-label">Version</label>-->
+    <!--        <input type="text" class="form-control" id="Version" name="version" readonly placeholder="0" formControlName="version">-->
+    <!--        <div *ngIf="version.invalid && (version.dirty || version.touched)"-->
+    <!--             class="invalid-input">-->
+    <!--          <div *ngIf="version.errors['maxlength']">-->
+    <!--            La version ne peut dépasser la limite de {{version.errors['maxlength']['requiredLength']}} caractères.-->
+    <!--          </div>-->
+    <!--        </div>-->
+    <!--      </div>-->
+
+    <!--Description Input-->
+    <div class="col-md-6 mt-4">
+      <label for="Description" class="form-label">Description</label>
+      <input type="text" class="form-control" id="Description" name="description"
+        placeholder="Description de la catégorie" formControlName="description">
+      <div *ngIf="description.invalid && (description.dirty || description.touched)" class="invalid-input">
+        <div *ngIf="description.errors['maxlength']">
+          La description ne peut dépasser la limite de {{description.errors['maxlength']['requiredLength']}} caractères.
+        </div>
+      </div>
+    </div>
+
+    <!--Button input -->
+    <div class="col-md-6 mt-4 text-center">
+      <div class="btn-group pt-4" role="group" aria-label="Basic example">
+        <button type="submit" class="btn btn-primary">Sauvegarder</button>
+        <button type="button" class="btn btn-danger" routerLink="/category">Annuler</button>
+      </div>
+    </div>
+
+  </form>
+</div>

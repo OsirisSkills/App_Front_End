@@ -1,0 +1,27 @@
+<div class="search">
+  <nav class="d-flex justify-content-between">
+    <div class="d-flex align-items-center">
+    </div>
+    <div class="input-and-suggestions">
+      <div class="search-container">
+        <div class="input-container">
+          <input #searchInput type="text" class="search-input" [(ngModel)]="searchValue"
+                 (ngModelChange)="inputModified($event)"
+                 name="searchInput">
+        </div>
+        <div class="text-center">
+          <button class="btn btn-outline-primary my-2 my-sm-0" (click)="search()" [disabled]="searchValue === ''" type="submit">Recherche</button>
+        </div>
+
+<!--        <button class="btn btn-primary" (click)="reset()" [disabled]="searchValue === ''" >Réinitialiser</button>-->
+      </div>
+      <div #menuSuggestions class="menu-suggestions" *ngIf="suggestionResult.length > 0 && showMenu">
+        <a *ngFor="let result of suggestionResult" [routerLink]="['/' + endPoint, result.id]" class="menu-suggestion">
+          <div class="menu-suggestion-item">{{ displayFn(result)}}</div>
+        </a>
+      </div>
+    </div>
+<!--    <button class="btn btn-primary me-2 bi bi-plus-lg" routerLink="new" name="newCategoryButton">Nouvelle-->
+<!--      catégorie</button>-->
+  </nav>
+</div>

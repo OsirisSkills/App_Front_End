@@ -1,0 +1,33 @@
+.text-center{
+  width: auto;
+}
+
+#tableProjectFiles{
+  width: 100%;
+}
+
+.table-filename {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 20rem; /* ajustez en fonction de vos besoins */
+  //min-width: 10rem;
+}
+
+td:not(.table-filename)
+{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 5px; /* Ajustez selon vos besoins pour créer un écart/marge */
+}
+
+//td::after {
+//  content: "";
+//  position: absolute;
+//  top: 0;
+//  right: 0;
+//  width: 50%; /* Ajustez selon vos besoins */
+//  height: 100%;
+//  background: linear-gradient(to right, transparent, white 80%);
+//}

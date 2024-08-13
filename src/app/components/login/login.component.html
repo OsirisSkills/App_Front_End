@@ -1,0 +1,105 @@
+<div class="html">
+
+  <div class=" d-flex justify-content-center align-items-center">
+
+
+    <div class="container-lg-fluid col-lg-5 text-center ">
+      <div class="text-center">
+        <div class="main">
+          <img src="assets/img/img.png">
+          <!--    <h1>Connexion</h1>-->
+          <p id="con-description">
+            Connectez-vous et accédez aux référentiels des projets de l'organisation
+          </p>
+
+          <form [formGroup]="aFormGroup" class="form-box" (ngSubmit)="onSubmit()">
+            <!--Input: Email -->
+            <div class="mb-3">
+              <input
+                type="email"
+                formControlName="email"
+                class="form-control"
+                aria-describedby="emailHelpId"
+                placeholder="E-mail"
+
+              />
+              <p *ngIf="validate('email'); let error" class="text-danger">
+                {{ error }}
+              </p>
+            </div>
+
+            <!--Input: Password -->
+            <div class="mb-3">
+              <input
+                name=""
+                id=""
+                placeholder="Mot de passe"
+                type="password"
+                formControlName="password"
+                class="form-control"
+              />
+              <p *ngIf="validate('password'); let error" class="text-danger">
+                {{ error }}
+              </p>
+            </div>
+
+            <div class="captcha pt-4">
+              <!--recaptcha -->
+              <ngx-recaptcha2
+                #capcthaElem
+                [siteKey]="siteKey"
+                formControlName="recaptchaToken"
+                (success)="checkCaptcha($event)"
+              />
+              <p *ngIf="validate('recaptchaToken'); let error" class="text-danger">
+                {{ error }}
+              </p>
+            </div>
+
+
+
+
+            <!-- Forgot password/ Remember me -->
+            <div class="passsword-remember-forgot pt-4">
+              <!-- TO DO: Création d'une méthode pour le 'Remember Me' -->
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="rememberMe"
+                />
+                <label class="form-check-label" for="rememberMe">
+                  Se souvenir de moi
+                </label>
+              </div>
+
+              <!--Link "/forgot-password" -->
+              <div class="forgot-link">
+                <a routerLink="/forgot-password">Mot de passe oublié ?</a>
+              </div>
+            </div>
+            <div style="clear: both"></div>
+
+            <!--Submit button -->
+            <div class="d-grid gap-2">
+              <button
+                type="submit"
+                name="con-button"
+                id="btn-connexion"
+                class="btn btn-primary">
+                Se Connecter
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+</div>
+

@@ -1,0 +1,212 @@
+<div class="my-container container-fluid">
+  <div class="d-flex ms-2 mt-2">
+    <!--BreadCrumb-->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/home">Accueil</a></li>
+        <li class="breadcrumb-item"><a routerLink="/members">Membres</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Modifier un membre</li>
+      </ol>
+    </nav>
+
+  </div>
+  <h1 class="text-center mb-5 mt-5">Modifier un membre</h1>
+  <div class="container category-form">
+    <form class="row d-flex flex-column align-content-center" novalidate>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <!--UserName Input-->
+          <label for="userName" class="form-label">Nom d'utilisateur</label>
+          <input type="text" class="form-control" name="Name" id="userName" [(ngModel)]="member.userName"  placeholder=""
+            >
+<!--          <div *ngIf="userName.invalid && (userName.dirty || userName.touched)" class="invalid-input">-->
+
+<!--            <div *ngIf="userName.errors['required']">-->
+<!--              Le nom d'utilisateur est requis.-->
+<!--            </div>-->
+<!--            <div *ngIf="userName.errors['minlength']">-->
+<!--              Le nom d'utilisateur doit avoir une longueur minimale de-->
+<!--              {{userName.errors['minlength']['requiredLength']}} caractères.-->
+<!--            </div>-->
+<!--            <div *ngIf="userName.errors['maxlength']">-->
+<!--              Le nom d'utilisateur ne peut dépasser la limite de {{userName.errors['maxlength']['requiredLength']}}-->
+<!--              caractères.-->
+<!--            </div>-->
+
+          </div>
+
+        <div class="col-md-6">
+          <!--Email Input-->
+          <label for="email" class="form-label">Email</label>
+          <input type="email" name="Email" class="form-control" id="email" [(ngModel)]="member.email" placeholder="" >
+          <!--          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-input">-->
+          <!--&lt;!&ndash;            <div *ngIf="email.errors['required']">&ndash;&gt;-->
+          <!--&lt;!&ndash;              Une adresse mail est requise.&ndash;&gt;-->
+          <!--&lt;!&ndash;            </div>&ndash;&gt;-->
+          <!--&lt;!&ndash;            <div *ngIf="email.errors['maxlength']">&ndash;&gt;-->
+          <!--&lt;!&ndash;              L'adresse mail ne peut dépasser la limite de {{email.errors['maxlength']['requiredLength']}} caractères.&ndash;&gt;-->
+          <!--&lt;!&ndash;            </div>&ndash;&gt;-->
+          <!--&lt;!&ndash;            <div *ngIf="email.errors['email']">&ndash;&gt;-->
+          <!--&lt;!&ndash;              Veuillez entrer une adresse mail valide.&ndash;&gt;-->
+          <!--&lt;!&ndash;            </div>&ndash;&gt;-->
+          <!--          </div>-->
+        </div>
+        </div>
+
+
+      <!--        <div class="row g-3">-->
+      <!--&lt;!&ndash;          <div class="col-md-6">&ndash;&gt;-->
+      <!--&lt;!&ndash;            <label for="password">Mot de passe</label>&ndash;&gt;-->
+      <!--&lt;!&ndash;            <input type="password" class="form-control" id="password" placeholder="Entrez votre mot de passe" formControlName="password">&ndash;&gt;-->
+      <!--&lt;!&ndash;            <div *ngIf="password.invalid && (password.dirty || password.touched)"&ndash;&gt;-->
+      <!--&lt;!&ndash;                 class="invalid-input">&ndash;&gt;-->
+      <!--&lt;!&ndash;              <div *ngIf="password.errors['required']">Le mot de passe est obligatoire</div>&ndash;&gt;-->
+      <!--&lt;!&ndash;              <div *ngIf="password.errors['passwordRequirements']">&ndash;&gt;-->
+      <!--&lt;!&ndash;                Le mot de passe doit contenir au moins 1 minuscule, 1 majuscule, 1 chiffre et 1 caractère spécial.&ndash;&gt;-->
+      <!--&lt;!&ndash;              </div>&ndash;&gt;-->
+      <!--&lt;!&ndash;              <div *ngIf="password.errors['minlength']">&ndash;&gt;-->
+      <!--&lt;!&ndash;                Le mot de passe doit avoir une longueur minimale de {{password.errors['minlength']['requiredLength']}} caractères.&ndash;&gt;-->
+      <!--&lt;!&ndash;              </div>&ndash;&gt;-->
+      <!--&lt;!&ndash;              <div *ngIf="password.errors['maxlength']">&ndash;&gt;-->
+      <!--&lt;!&ndash;                Le mot de passe ne peut dépasser la limite de {{password.errors['maxlength']['requiredLength']}} caractères.&ndash;&gt;-->
+      <!--&lt;!&ndash;              </div>&ndash;&gt;-->
+      <!--&lt;!&ndash;            </div>&ndash;&gt;-->
+      <!--&lt;!&ndash;          </div>&ndash;&gt;-->
+      <!--&lt;!&ndash;          <div class="col-md-6">&ndash;&gt;-->
+      <!--&lt;!&ndash;            <label for="passwordConfirmation">Confirmez le mot de passe</label>&ndash;&gt;-->
+      <!--&lt;!&ndash;            <input type="password" class="form-control" id="passwordConfirmation" placeholder="Confirmez votre mot de passe" formControlName="passwordConfirm">&ndash;&gt;-->
+      <!--&lt;!&ndash;            <div *ngIf="passwordConfirm.invalid && (passwordConfirm.dirty || passwordConfirm.touched)"&ndash;&gt;-->
+
+      <!--&lt;!&ndash;                 class="invalid-input">&ndash;&gt;-->
+      <!--&lt;!&ndash;              <div *ngIf="passwordConfirm.errors['match']">&ndash;&gt;-->
+      <!--&lt;!&ndash;                Les champs de mot de passe ne correspondent pas.&ndash;&gt;-->
+      <!--&lt;!&ndash;              </div>&ndash;&gt;-->
+      <!--&lt;!&ndash;            </div>&ndash;&gt;-->
+      <!--&lt;!&ndash;          </div>&ndash;&gt;-->
+      <!--        </div>-->
+      <div class="row g-3 pt-4">
+        <div class="col-md-6">
+          <!--FirstName Input-->
+          <label for="firstName" class="form-label">Prénom</label>
+          <input type="text" class="form-control" name="firstName" id="firstName" [(ngModel)]="member.firstName" placeholder=""
+            >
+<!--          <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="invalid-input">-->
+
+<!--            <div *ngIf="firstName.errors['required']">-->
+<!--              Un prénom est requis.-->
+<!--            </div>-->
+<!--            <div *ngIf="firstName.errors['minlength']">-->
+<!--              Le prénom doit avoir une longueur minimale de {{firstName.errors['minlength']['requiredLength']}}-->
+<!--              caractères.-->
+<!--            </div>-->
+<!--            <div *ngIf="firstName.errors['maxlength']">-->
+<!--              Le prénom ne peut dépasser la limite de {{firstName.errors['maxlength']['requiredLength']}} caractères.-->
+<!--            </div>-->
+<!--          </div>-->
+        </div>
+        <div class="col-md-6">
+          <!--LastName Input-->
+          <label for="lastName" class="form-label">Nom</label>
+          <input type="text" class="form-control" name="LastName" id="lastName" [(ngModel)]="member.lastName" placeholder=""
+            >
+<!--          <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="invalid-input">-->
+
+<!--            <div *ngIf="lastName.errors['required']">-->
+<!--              Un nom est requis.-->
+<!--            </div>-->
+<!--            <div *ngIf="lastName.errors['minlength']">-->
+<!--              Le nom doit avoir une longueur minimale de {{lastName.errors['minlength']['requiredLength']}} caractères.-->
+<!--            </div>-->
+<!--            <div *ngIf="lastName.errors['maxlength']">-->
+<!--              Le nom ne peut dépasser la limite de {{lastName.errors['maxlength']['requiredLength']}} caractères.-->
+<!--            </div>-->
+<!--          </div>-->
+        </div>
+      </div>
+      <div class="row g-3 pt-4" >
+        <div class="col-md-6">
+          <!--Sexe Input-->
+          <label for="selectMemberSex" class="form-label">Sexe</label>
+<!--          <select class="form-select" id="selectMemberSex"  >-->
+<!--            <option value="{{member.sexe}}" selected="selected">{{member.sexe}}</option>-->
+<!--            <option value="Homme">Homme</option>-->
+<!--            <option value="Femme">Femme</option>-->
+<!--          </select>-->
+          <input type="text" class="form-control" name="Sexe" id="selectMemberSex" [(ngModel)]="member.sexe" placeholder="">
+<!--          <div *ngIf="sexe.invalid && (sexe.dirty || sexe.touched)" class="invalid-input">-->
+
+<!--            <div *ngIf="sexe.errors['required']">-->
+<!--              La selection du sexe est requise.-->
+<!--            </div>-->
+<!--          </div>-->
+        </div>
+
+        <div class="col-md-6">
+          <!--Role Input-->
+          <label for="selectMemberRole" class="form-label">Role</label>
+<!--          <select class="form-select" id="selectMemberRole" >-->
+<!--            <option value="0" selected="selected">{{member.role}}</option>-->
+<!--            <option value="Manager">Manager</option>-->
+<!--            <option value="ChiefProject">Chef de projet</option>-->
+<!--            <option value="User">Utilisateur</option>-->
+
+            <input type="text" class="form-control" name="Role" id="selectMemberRole" [(ngModel)]="member.role" placeholder="">
+<!--          </select>-->
+<!--          <div *ngIf="role.invalid && (role.dirty || role.touched)" class="invalid-input">-->
+
+<!--            <div *ngIf="role.errors['required']">-->
+<!--              La selection du role est requise.-->
+<!--            </div>-->
+<!--          </div>-->
+        </div>
+      </div>
+      <div class="row g-3 pt-4">
+        <div class="col-md-6">
+          <!--Address Of Work-->
+          <label for="inputMemberWorkplace" class="form-label">Lieu de travail</label>
+          <input type="text" class="form-control" name="Location" id="inputMemberWorkplace" [(ngModel)]="member.location" placeholder=""
+            >
+<!--          <div *ngIf="role.invalid && (role.dirty || role.touched)" class="invalid-input">-->
+
+<!--            <div *ngIf="role.errors['maxlength']">-->
+<!--              Le lieu de travail ne peut dépasser la limite de {{role.errors['maxlength']['requiredLength']}}-->
+<!--              caractères.-->
+<!--            </div>-->
+<!--          </div>-->
+        </div>
+        <div class="col-md-6">
+          <!--Number Phone Input-->
+          <label for="inputMemberPhone" class="form-label">Téléphone</label>
+          <input type="text" class="form-control" id="inputMemberPhone" name="phone" [(ngModel)]="member.numberPhone" placeholder=""
+            >
+<!--          <div *ngIf="numberPhone.invalid && (numberPhone.dirty || numberPhone.touched)" class="invalid-input">-->
+
+<!--            <div *ngIf="numberPhone.errors['maxlength']">-->
+<!--              Le numéro de téléphone ne peut dépasser la limite de {{numberPhone.errors['maxlength']['requiredLength']}}-->
+<!--              caractères.-->
+<!--            </div>-->
+<!--          </div>-->
+        </div>
+
+
+      </div>
+      <div class="row g-3 pt-4">
+        <div class="col-md-12">
+          <!--Addresse Input-->
+          <label for="inputMemberAddress" class="form-label">Adresse</label>
+          <textarea  name="Address" class="form-control" id="inputMemberAddress" rows="3" [(ngModel)]="member.address"
+            ></textarea>
+        </div>
+      </div>
+
+      <div class="col-md-6 mt-4 text-center">
+
+        <!--Button Group-->
+        <div class="btn-group pt-4" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-primary" (click)="updateMember()">Sauvegarder</button>
+          <button type="button" class="btn btn-danger" routerLink="/members">Annuler</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

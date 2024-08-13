@@ -1,0 +1,68 @@
+.text-center {
+  width: auto;
+}
+
+
+#tableProjectFiles {
+  //table-layout: fixed;
+  width: 100%;
+}
+
+//
+//.table-filename{
+//  max-width: 0;
+//  overflow: hidden;
+//  text-overflow: ellipsis;
+//  white-space: nowrap;
+//}
+
+.table-filename {
+  max-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table-file-type {
+  width: 10%;
+}
+
+.table-file-size {
+  width: 10%;
+}
+
+.table-file-actions {
+  width: calc(3 * 50px); /* 3 actions */
+}
+
+.table-file-actions button {
+  margin: 0 0.2rem;
+}
+
+.selectMember {
+  //width: 100%;
+  min-height: 50px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+
+/* Pour le fond du champ */
+.white-select .mat-form-field-flex > .mat-form-field-infix {
+  background-color: white;
+}
+
+/* Pour le fond du menu déroulant */
+.white-select .mat-select-panel {
+  background-color: white;
+}
+
+/* Pour le texte du menu déroulant */
+.white-select .mat-option-text {
+  color: black; /* ou une autre couleur de votre choix */
+}
+
+/* Pour le fond de l'option lorsqu'elle est sélectionnée */
+.white-select .mat-option.mat-selected {
+  background-color: rgba(0, 0, 0, 0.1); /* une couleur semi-transparente pour l'option sélectionnée */
+}

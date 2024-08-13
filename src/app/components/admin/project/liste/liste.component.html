@@ -1,0 +1,91 @@
+<div class="my-container container-fluid">
+  <div id="members-search-header">
+
+    <div class="d-flex ms-2 mt-2">
+      <!--BreadCrumb-->
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/home">Accueil</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Projets</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="row">
+      <div class="col">
+        <app-search-bar
+          [displayFn]="displayProject"
+          [column]="'projectName'"
+          (searchValueChange)="searchValueResultHandler($event)">
+        </app-search-bar>
+      </div>
+      <div class="col my button">
+        <button class="btn btn-success me-2 bi bi-plus-lg float-end" routerLink="new" name="newCategoryButton">Nouveau
+          Projet</button>
+      </div>
+    </div>
+
+    <div>
+      <app-page-size-selector
+        [pageSizeSelected]="pageSize"
+        (pageSizeChange)="onPageSizeChange($event)">
+      </app-page-size-selector>
+    </div>
+
+
+    <nav class="d-flex justify-content-between">
+      <div class="d-flex align-items-center">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class=" bi bi-list-ul nav-link  text-dark" routerLink="/liste">Liste</a>
+          </li>
+          <li class="nav-item">
+            <a class=" bi bi-kanban nav-link active text-primary" routerLink="/kanban-board">Kanban</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Categorie</th>
+        <th>Date de début</th>
+        <th>Date de fin</th>
+
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let project of projectApi">
+
+        <td>{{ project.projectName }}</td>
+        <td>{{ project.description }}</td>
+        <td>{{ categoryNames[project.id]}}</td>
+        <td>{{ project?.startDate }}</td>
+        <td>{{ project?.endDate }}</td>
+
+        <td>
+          <button class="btn btn-primary me-2" routerLink="{{project.id}}">
+            <span class="bi bi-eye"></span>
+          </button>
+          <button class="btn btn-warning me-2" routerLink="{{project.id}}/edit">
+            <span class="bi bi-pencil"></span>
+          </button>
+          <button class="btn btn-danger me-2" (click)="deleteProject(project.id)">
+            <span class="bi bi-trash"></span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <app-pagination
+    [quantityOfItems]="quantityOfProject"
+    (pageChange)="onPageChange($event)">
+  </app-pagination>
+
+  </div>
+</div>

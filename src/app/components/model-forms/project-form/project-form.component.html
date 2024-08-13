@@ -1,0 +1,128 @@
+<div class="container category-form">
+    <h1>Ajouter un nouveau projet</h1>
+
+    <form>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label for="inputProjectName" class="form-label">Nom du projet</label>
+                <input type="text" class="form-control" id="inputProjectName" placeholder="ex: APP">
+            </div>
+            <div class="col-md-6">
+                <label for="inputProjectManager" class="form-label">Chef du projet</label>
+                <input type="text" class="form-control" id="inputProjectManager" placeholder="Entrez un identifiant">
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label for="inputProjectParticipants" class="form-label">Participants</label>
+                <input type="text" class="form-control" id="inputProjectParticipants"
+                    placeholder="Entrez un identifiant">
+            </div>
+            <div class="col-md-6">
+                <label for="inputProjectStartingDate" class="form-label">Date de début</label>
+                <input type="date" class="form-control" id="inputProjectStartingDate" placeholder="">
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-md-6">
+                <!--Input EndDate-->
+                <label for="inputProjectEndingDate" class="form-label">Date de fin</label>
+                <input type="date" class="form-control" id="inputProjectEndingDate" placeholder="">
+            </div>
+            <div class="col-md-6">
+                <!--Status Input -->
+                <label for="inputProjectState" class="form-label">Etat</label>
+                <input type="text" class="form-control" id="inputProjectState"
+                    placeholder="ex: Ebauche / En cours / ...">
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-md-6">
+                <!--Links-->
+                <label for="inputProjectLink" class="form-label">Lien</label>
+                <input type="text" class="form-control" id="inputProjectLink" placeholder="ex: www.unsite.com">
+            </div>
+            <div class="col-md-6">
+                <label for="inputProjectProgression" class="form-label">Progression (en %)</label>
+                <input type="number" class="form-control" id="inputProjectProgression" min="0" max="100"
+                    placeholder="ex: 50" default="0">
+            </div>
+
+        </div>
+
+        <div class="row g-3">
+            <div class="col-md-6">
+                <!--Input Description -->
+                <label for="inputProjectDescription" class="form-label">Description</label>
+                <textarea class="form-control" name="" id="inputProjectDescription" rows="3"
+                    placeholder="Description du projet..."></textarea>
+            </div>
+            <div class="col-md-6">
+                <label for="selectProjectCategory" class="form-label">Catégorie</label>
+                <select class="form-select" name="category" id="selectProjectCategory">
+                    <option selected>Selectionnez la catégorie</option>
+                    <option value="Applicatif">Applicatif</option>
+                    <option value="API">API</option>
+                    <option value="Siteweb">Site web</option>
+                    <option value="Infra">Infra</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <label for="selectProjectFileType" class="form-label">Fichiers</label>
+            <div class="col-md-6">
+                <select class="form-select" name="category" id="selectProjectFileType">
+                    <option selected>Type de fichier</option>
+                    <option value="specification">Specification</option>
+                    <option value="manuelutilisateur">Manuel Utilisateur</option>
+                    <option value="vision">Vision</option>
+                    <option value="maquettes">Maquettes</option>
+                    <option value="docapi">Doc API</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <input type="file" class="form-control" name="" id="selectProjectFilre" placeholder=""
+                        aria-describedby="fileHelpId">
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="table-responsive col-md-6">
+                <table class="table table-primary">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Type de fichier</th>
+                            <th scope="col">Fichier</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="">
+                            <td><img src="assets/images/cross.png" width="20" /></td>
+                            <td>Manuel Utilisateur</td>
+                            <td>Manuel.docx</td>
+                        </tr>
+                        <tr class="">
+                            <td><img src="assets/images/cross.png" width="20" /></td>
+                            <td>Doc API</td>
+                            <td>API.pdf</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-md-6 foot-buttons">
+                <button type="button" class="btn btn-primary">Sauvegarder</button>
+                <button type="button" class="btn btn-secondary">Annuler</button>
+            </div>
+        </div>
+    </form>
+</div>

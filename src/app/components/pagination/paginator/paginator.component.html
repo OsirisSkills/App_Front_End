@@ -1,0 +1,28 @@
+<nav class="paginator">
+  <div class="pagination justify-content-center"
+       *ngIf="numOfPages > 1">
+    <button class="btn btn-outline-dark me-1"
+            *ngIf="currentPage > 1"
+            (click)="selectPage(1)" [disabled]="currentPage === 1">
+      <span class="bi bi-chevron-double-left"></span>
+    </button>
+    <button class="btn btn-outline-dark me-1"
+            *ngIf="currentPage > 1"
+            (click)="selectPage(currentPage - 1)" [disabled]="currentPage === 1">
+      <span class="bi bi-chevron-left"></span>
+    </button>
+    <button class="paginator btn btn-outline-dark me-1"
+            *ngFor="let page of pageArray"
+            (click)="selectPage(page)" [disabled]="currentPage === page">{{ page }}</button>
+    <button class="btn btn-outline-dark me-1"
+            *ngIf="currentPage < numOfPages"
+            (click)="selectPage(currentPage + 1)" [disabled]="currentPage >= numOfPages">
+      <span class="bi bi-chevron-right"></span>
+    </button>
+    <button class="btn btn-outline-dark"
+            *ngIf="currentPage < numOfPages"
+            (click)="selectPage(numOfPages)" [disabled]="currentPage >= numOfPages">
+      <span class="bi-chevron-double-right"></span>
+    </button>
+  </div>
+</nav>

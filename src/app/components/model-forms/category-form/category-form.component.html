@@ -1,0 +1,24 @@
+<div class="container category-form">
+    <h1>Ajouter une catégorie</h1>
+    <form>
+        <div class="row g-3">
+            <div class="col-12">
+                <label for="inputName" class="col-form-label">Nom de la catégorie</label>
+                <input type="text" class="form-control" name="inputName" id="inputName" placeholder="ex: API">
+            </div>
+        </div>
+        <div class="mb-3">
+            <div class="col-12">
+                <label for="" class="col-form-label">Description de la catégorie</label>
+                <textarea class="form-control" name="" id="inputDescription" rows="3"
+                    placeholder="ex: Catégorie regroupant les projets d'API."></textarea>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <div class="offset-sm-4 col-sm-12 foot-buttons">
+                <button type="button" class="btn btn-primary" routerLink="../form-list">Sauvegarder</button>
+                <button type="button" class="btn btn-secondary" routerLink="../form-list">Annuler</button>
+            </div>
+        </div>
+    </form>
+</div>

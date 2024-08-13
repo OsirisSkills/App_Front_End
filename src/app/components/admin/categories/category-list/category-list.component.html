@@ -1,0 +1,65 @@
+<div class="my-container container-fluid">
+    <div class="d-flex ms-2 mt-2">
+        <!--BreadCrumb-->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/home">Accueil</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Catégories</li>
+            </ol>
+        </nav>
+    </div>
+    <div id="members-search-header">
+        <div class="row">
+            <div class="col">
+                <app-search-bar
+                        [displayFn]="displayCategory"
+                        [column]="'name'"
+                        (searchValueChange)="searchValueResultHandler($event)">
+                </app-search-bar>
+            </div>
+            <div class="col my button">
+                <button class="btn btn-success me-2 bi bi-plus-lg float-end" routerLink="new" name="newCategoryButton">
+                    Nouvelle
+                    catégorie
+                </button>
+            </div>
+        </div>
+        <div>
+            <app-page-size-selector
+                    [pageSizeSelected]="pageSize"
+                    (pageSizeChange)="onPageSizeChange($event)">
+            </app-page-size-selector>
+        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Version</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let category of categoriesApi">
+                <td>{{ category.name }}</td>
+                <td>{{ category.version }}</td>
+                <td>{{ category.description }}</td>
+                <td>
+                    <button class="btn btn-primary me-2" routerLink="{{ category.id}}">
+                        <span class="bi bi-eye"></span>
+                    </button>
+                    <button class="btn btn-warning me-2" routerLink="{{category.id}}/edit">
+                        <span class="bi bi-pencil"></span>
+                    </button>
+                    <button class="btn btn-danger" (click)="deleteCategory(category.id)">
+                        <span class="bi bi-trash"></span>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <app-pagination
+                [quantityOfItems]="quantityOfCategory"
+                (pageChange)="onPageChange($event)">
+        </app-pagination>
+    </div>

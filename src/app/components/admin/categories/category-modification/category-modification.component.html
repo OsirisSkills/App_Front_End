@@ -1,0 +1,51 @@
+div class="my-container container-fluid">
+  <div class=" d-flex ms-2 mt-2">
+<!--    BreadCrumb-->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/home">Accueil</a></li>
+        <li class="breadcrumb-item"><a routerLink="/category">Catégories</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Modifier une catégorie</li>
+      </ol>
+    </nav>
+  </div>
+
+  <form class="row d-flex flex-column align-content-center" novalidate>
+
+    <div class="col-md-6 mb-5 mt-5">
+      <h1 class="text-center">Modifier la Catégorie</h1>
+    </div>
+
+    <div class="col-md-6 mt-4">
+      <!--Input name-->
+      <label for="inputCategoryName" class="form-label">Nom</label>
+      <input type="text" [(ngModel)]="category.name" name="Name" class="form-control" id="inputCategoryName"
+        placeholder="">
+    </div>
+
+    <div class="col-md-6 mt-4">
+      <!--Input Version-->
+      <label for="inputCategoryVersion" class="form-label">Version</label>
+      <input type="number" [(ngModel)]="category.version" readonly name="version" class="form-control"
+        id="inputCategoryVersion" placeholder="">
+    </div>
+
+    <div class="col-md-6 mt-4">
+      <!--Input Description-->
+      <label for="inputCategoryDescription" class="form-label text-center">Description</label>
+      <input type="text" [(ngModel)]="category.description" name="description" class="form-control"
+        id="inputCategoryDescription" placeholder="">
+    </div>
+
+
+
+    <!--Button Group-->
+    <div class="col-md-6 mt-4 text-center">
+      <div class="btn-group pt-4" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-primary" (click)="updateCategory()">Sauvegarder</button>
+        <button type="button" class="btn btn-danger" routerLink="/category">Annuler</button>
+      </div>
+    </div>
+  </form>
+
+
